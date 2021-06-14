@@ -21,37 +21,62 @@ const usersSchema = new mongoose.Schema({
   },
   role: {
     type: [String],
-    enum: [ 'admin', 'abogado', 'user' ],
+    enum: [ 'admin', 'abogado', 'cliente', 'user' ],
     minLength: 1,
     required: true
   },
-  telefono: {
+  idCard: {
     type: String,
     required: true,
     minLength: 1
   },
-  telefono: {
+  phone: {
     type: String,
     required: true,
     minLength: 1
   },
-  curp: {
+  imgProfile: {
     type: String,
     required: true,
     minLength: 1
   },
-  domicilio: {
+  date: {
+    type: Date,
+    required: true,
+    minLength: 1
+  },
+  adress: {
     type: String,
     required: true,
     minLength: 1
   },
-  preferencias: {
+  description: {
     type: String,
     required: true,
     minLength: 1
   },
-  nacimiento: {
+  linkedin: {
     type: String,
+    required: true,
+    minLength: 1
+  },
+  enterprise: {
+    type: String,
+    required: true,
+    minLength: 1
+  },
+  website: {
+    type: String,
+    required: true,
+    minLength: 1
+  },
+  dateCreation: {
+    type: Date,
+    required: true,
+    minLength: 1
+  },
+  isDeleted: {
+    type: Boolean,
     required: true,
     minLength: 1
   },
