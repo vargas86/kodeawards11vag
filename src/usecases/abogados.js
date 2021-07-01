@@ -1,27 +1,27 @@
 
-const Users = require('../models/users')
+const Abogados = require('../models/abogados')
 const bcrypt = require('../lib/bcrypt')
 const jwt = require('../lib/jwt')
 
 function getAll () {
-  return Users.find()
+  return Abogados.find()
 }
 
 function getById (id) {
-  return Users.findById(id)
+  return Abogados.findById(id)
 }
 
 async function signUp ({ name, email, password, role }) {
 
-  const userFound = await Users.findOne({ email })
+  const abogadoFound = await Abogados.findOne({ email })
 
-  if (userFound) {
-    throw new Error('User already exists')
+  if (abogadoFound) {
+    throw new Error('Abogado ya existe')
   }
 
   const encriptedPassword = await bcrypt.hash(password)
 
-  return Users.create({
+  return Abogados.create({
     name,
     email,
     password: encriptedPassword,
@@ -30,13 +30,13 @@ async function signUp ({ name, email, password, role }) {
 }
 
 async function login (email, password) {
-  const userFound = await Users.findOne({ email })
+  const abogadoFound = await Abogados.findOne({ email })
 
-  if(!userFound) {
+  if(!abogadoFound) {
     throw new Error('Invalid data email')
   }
   
-  const isValidPassword = await bcrypt.compare(password, userFound.password)
+  const isValidPassword = await bcrypt.compare(password, abogadoFound.password)
   
   if(!isValidPassword) {
     throw new Error('Invalid data password')

@@ -3,17 +3,17 @@ const express = require('express')
 
 const router = express.Router()
 
-const users = require('../usecases/users')
+const abogados = require('../usecases/abogados')
 
 router.post('/', async (request, response) => {
     try {
-        const newUser = await users.signUp(request.body)
+        const newAbogado = await abogados.signUp(request.body)
 
         response.json({
             success: true,
-            message: 'User registered',
+            message: 'Abogado Registrado',
             data: {
-                user: newUser
+                Abogado: newAbogado
             }
         })
     } catch (error) {
@@ -28,13 +28,13 @@ router.post('/', async (request, response) => {
 
 router.get('/', async (request, response) => {
     try {
-        const allUsers = await users.getAll()
+        const allAbogados = await abogados.getAll()
 
         response.json({
             success: true,
-            message: 'All Users',
+            message: 'All Abogados',
             data: {
-            users: allUsers 
+            users: allAbogados 
             }
         })
     } catch (error) {
@@ -50,7 +50,7 @@ router.get('/', async (request, response) => {
 router.post('/login', async (request, response) => {
     try {
         const { email, password } = await request.body
-        const token = users.login(email, password)
+        const token = abogados.login(email, password)
 
         response.json({
             success: true,

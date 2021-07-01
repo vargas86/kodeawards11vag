@@ -1,6 +1,6 @@
 
 const jwt = require('../lib/jwt')
-const users = require('../usecases/users')
+const abogados = require('../usecases/abogados')
 
 function auth (request, response, next) {
   try {
@@ -39,12 +39,12 @@ function authRoles (allowedRoles) {
         throw new Error('Not Authorized')
       }
 
-      const userFound = await users.getById(isValidToken.id)
+      const abogadoFound = await abogado.getById(isValidToken.id)
 
-      const userRoles = userFound.role || []
+      const abogadoRoles = abogadoFound.role || []
 
-      const isAllowedRole = userRoles.find(userRole => {
-        return allowedRoles.find( allowedRole => userRole === allowedRole )
+      const isAllowedRole = abogadoRoles.find(abogadoRole => {
+        return allowedRoles.find( allowedRole => abogadoRole === allowedRole )
       })
 
       if (!isAllowedRole) {
