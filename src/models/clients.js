@@ -43,7 +43,6 @@ const clientsSchema = new mongoose.Schema({
     birthDate : {
         type : String,
         match : /[0-9]{2}\/[0-9]{2}\/[0-9]{4}/gm,
-        required : true
     },
     creationDate : {
         type: String,
@@ -55,6 +54,19 @@ const clientsSchema = new mongoose.Schema({
     }
 })
 
-const model = mongoose.model('clients', clientsSchama)
+const model = mongoose.model('clients', clientsSchema)
 
 module.exports = model
+
+/*
+"name": "rodrigo",
+    "lastName": "jau",
+    "email": "jau@gmail.com",
+    "password": "kodemia123",
+    "phoneNumber": "55-55-55-55-55",
+    "curp": "JAGR911223HDFRMD08",
+    "address": "cerro sanbhjbougoubgohipjojpjpo",
+    "birthDate": "12-12-1212",
+    "creationDate": "kblkbkjb",
+    "isDeleted": false
+*/

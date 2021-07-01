@@ -1,9 +1,9 @@
 const express = require('express')
-const users = require('../useCases/users')
+const users = require('../useCases/clients')
 const router = express.Router()
-const middleware = require('../middleware/auth')
-router.use(middleware)
+
 router.use(express.json())
+
 
 router.post('/', async (request, response) => {
     try {
@@ -32,7 +32,7 @@ router.post('/login', async (request, response) => {
             password
         } = request.body
         const token = await users.login(email, password)
-        localStorage.setItem('tkn', token)
+        //localStorage.setItem('tkn', token)
         response.json({
             success: true,
             msg: 'Logged in',
