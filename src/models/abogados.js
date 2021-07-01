@@ -8,7 +8,7 @@ const usersSchema = new mongoose.Schema({
     minLength: 2,
     maxLength: 20
   },
-  lastname: {
+  lastName: {
     type: String,
     required: true,
     minLength: 2,
@@ -82,7 +82,7 @@ const usersSchema = new mongoose.Schema({
   },
   role: {
     type: [String],
-    enum: [ 'abogado', 'cliente'],
+    enum: [ 'abogado' ],
     minLength: 1,
     required: true
   },
