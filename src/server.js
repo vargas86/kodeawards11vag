@@ -2,8 +2,10 @@
 const express = require('express')
 const cors = require('cors')
 
-//const kodersRouter = require('./routers/abogados')
-const usersRouter = require('./routers/abogados')
+const abogadosRouter = require('./routers/abogados')
+const clientsRouter = require('./routers/clients')
+const clientsCaseRouter = require('./routers/clientCase')
+const casesRouter = require('./routers/cases')
 
 const logger = require('./middlewares/logger')
 
@@ -13,8 +15,10 @@ app.use(express.json())
 
 app.use(logger)
 
-//app.use('/koders', abogadosRouter)
-app.use('/users', usersRouter)
+app.use('/abogados', abogadosRouter)
+app.use('/clients', clientsRouter)
+app.use('/clientsCase', clientsCaseRouter)
+app.use('/cases', casesRouter)
 
 
 module.exports = app
