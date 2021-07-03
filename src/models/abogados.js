@@ -81,8 +81,8 @@ const usersSchema = new mongoose.Schema({
     minLength: 1
   },
   role: {
-    type: [String],
-    enum: [ 'abogado' ],
+    type: String,
+    default: 'abogado',
     minLength: 1,
     required: true
   },

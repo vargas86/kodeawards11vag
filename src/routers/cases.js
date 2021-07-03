@@ -24,7 +24,7 @@ router.post('/', async (request, response) => {
     }
 })
 
-router.get('/', (request, response) => {
+router.get('/', async (request, response) => {
     try {
         const allCases = await cases.getAll()
         response.json({
