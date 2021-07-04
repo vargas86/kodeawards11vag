@@ -26,31 +26,11 @@ router.post('/', async (request, response) => {
     }
 })
 
-router.get('/', async (request, response) => {
-    try {
-        const allAbogados = await abogados.getAll()
-
-        response.json({
-            success: true,
-            message: 'All Abogados',
-            data: {
-            users: allAbogados 
-            }
-        })
-    } catch (error) {
-        response.status(400)
-        response.json({
-            success: false,
-            message: 'Could not get users',
-            error: error.message
-        })
-    }
-})
 
 router.post('/login', async (request, response) => {
     try {
-        const { email, password } = await request.body
-        const token = abogados.login(email, password)
+        const { email, password } =  request.body
+        const token = await abogados.login(email, password)
 
         response.json({
             success: true,
@@ -62,8 +42,31 @@ router.post('/login', async (request, response) => {
     } catch (error) {
         response.status(400)
         response.json({
-            success: false,
+            success: "Could not log in",
             message: error.message
+        })
+    }
+})
+
+
+router.get('/', async (request, response) => {
+    try {
+        const {email} = request.body;
+        const currentUser = await abogados.currentUser(email)
+
+        response.json({
+            success: true,
+            message: 'specific lawyer',
+            data: {
+            user: currentUser 
+            }
+        })
+    } catch (error) {
+        response.status(400)
+        response.json({
+            success: false,
+            message: 'Could not get lawyer',
+            error: error.message
         })
     }
 })

@@ -10,7 +10,6 @@ const usersSchema = new mongoose.Schema({
   },
   lastName: {
     type: String,
-    required: true,
     minLength: 2,
     maxLength: 20
   },
@@ -27,57 +26,46 @@ const usersSchema = new mongoose.Schema({
   },
   phone: {
     type: String,
-    required: true,
     minLength: 1
   },
   idCard: {
     type: String,
-    required: true,
     minLength: 1
   },
   imgProfile: {
     type: String,
-    required: true,
     minLength: 1
   },
   date: {
-    type: Date,
-    required: true,
+    type: String,
     minLength: 1
   },
   adress: {
     type: String,
-    required: true,
     minLength: 1
   },
   description: {
     type: String,
-    required: true,
     minLength: 1
   },
   linkedin: {
     type: String,
-    required: true,
     minLength: 1
   },
   enterprise: {
     type: String,
-    required: true,
     minLength: 1
   },
   website: {
     type: String,
-    required: true,
     minLength: 1
   },
   dateCreation: {
     type: Date,
-    required: true,
     minLength: 1
   },
   isDeleted: {
     type: Boolean,
-    required: true,
     minLength: 1
   },
   role: {
@@ -88,6 +76,27 @@ const usersSchema = new mongoose.Schema({
   },
 })
 
-const model = mongoose.model('users', usersSchema)
+const model = mongoose.model('abogados', usersSchema)
 
 module.exports = model
+
+/*
+
+	 "name": "rodrigo",
+  "lastName": "jauregui",
+  "email": "jau@gmail.com",
+  "password": "kodemia123",
+  "phone": "55555555",
+  
+  "idCard": "bla",
+  "imgProfile": "https://picsum.photos/200/300",
+  "date": "123456",
+  "adress":"cerro",
+  "description":"soy blbalalba",
+  "linkedin": "linkedin",
+  "enterprise":"occ",
+  "website": "www.mnpnoino",
+  "dateCreation": "Wed Dec 19 2012 01:03:25 GMT-0500 (EST)",
+  "isDeleted": false,
+  "role": "abogado"
+  */

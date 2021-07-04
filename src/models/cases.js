@@ -12,20 +12,20 @@ const casesSchema = new mongoose.Schema({
     },
     shortDescription : {
         type : String,
-        maxLength : 25,
+        maxLength : 50,
         required : true
     },
     longDescription : {
         type : String,
-        minLength : 25,
+        minLength : 50,
         required : true
     },
     sentenceEffects : {
-        type : [String],
+        type : String,
         default : ['registering'],
         required : true
     },
-    sentenceEffects : {
+    authorities : {
         type : Object,
         required : true
     },
@@ -65,6 +65,26 @@ const casesSchema = new mongoose.Schema({
     }
 })
 
-const model = mongoose.model('case', casesSchema)
+const model = mongoose.model('cases', casesSchema)
 
 module.exports = model
+
+/*
+"image":"https://picsum.photos/200",
+    "title" :"aborto legal",
+    "shortDescription" :"amparo para el aborto legal",
+    "longDescription" : "amparo para el aborto legal en el estado de jalisco bajo conidiciones dignas y en igualdad de circunstancias blablablablaa",
+    "sentenceEffects" : "se busca la inconstitucionalidad de la norma del codigo poenal que prohibe el aborto",
+    "autoridadesResponsables" : { "a":"presidente"},
+    
+    "plaint" : "demanda de amparo",
+    "cost" :500,
+    
+    "limitDate" : "18 de marzo",
+    "aditionals" : ["bla", "ble"],
+    "status" : "active",
+    
+    "updates" : {"a":"bla"},
+    "creationDate" : "hoy",
+    "responsibleUser" : "60dfd780687dc81f72bf51e5"
+*/

@@ -63,7 +63,6 @@ async function currentUser(email) {
 }
 
 async function update(email, newData) {
-    console.log(email, newData)
     const userToUpdate = await Users.findOneAndUpdate(email, newData)
 
     if (!userToUpdate) {

@@ -11,6 +11,12 @@ function getById (id) {
   return Abogados.findById(id)
 }
 
+async function currentUser(email) {
+  return await Abogados.find({
+      email
+  })
+}
+
 async function signUp ({ name, email, password, role }) {
 
   const abogadoFound = await Abogados.findOne({ email })
@@ -42,7 +48,9 @@ async function login (email, password) {
     throw new Error('Invalid data password')
   }
 
-  return jwt.sign({ id: userFound._id })
+  return jwt.sign({ id: abogadoFound._id })
+
+  
 
 }
 
@@ -50,5 +58,6 @@ module.exports = {
   getAll,
   signUp,
   login,
-  getById
+  getById,
+  currentUser
 }
