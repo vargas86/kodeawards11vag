@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const clientsSchema = new mongoose.Schema({
-    name : {
+    firstName : {
         type : String,
         minLength : 1,
         required : true
@@ -24,17 +24,14 @@ const clientsSchema = new mongoose.Schema({
     phoneNumber : {
         type: String,
         match : /[0-9+-]{2}/gm,
-        required : true
     },
     curp : {
         type : String,
         match: /[A-Z]{4}[0-9]{6}[A-Z]{6}[A-Z0-9]{2}/gm,
-        required : true
     },
     address : {
         type : String,
         minLength : 20,
-        required: true
     },
     preferences : {
         type : [String],
@@ -46,7 +43,6 @@ const clientsSchema = new mongoose.Schema({
     },
     creationDate : {
         type: String,
-        required : true
     },
     isDeleted : {
         type : Boolean,
