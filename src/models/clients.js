@@ -24,17 +24,26 @@ const clientsSchema = new mongoose.Schema({
     phoneNumber : {
         type: String,
         match : /[0-9+-]{2}/gm,
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0e50e758d89e37019d617363b4b32edb33bde14c
     },
     curp : {
         type : String,
         match: /[A-Z]{4}[0-9]{6}[A-Z]{6}[A-Z0-9]{2}/gm,
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0e50e758d89e37019d617363b4b32edb33bde14c
     },
     address : {
         type : String,
         minLength : 20,
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0e50e758d89e37019d617363b4b32edb33bde14c
     },
     preferences : {
         type : [String],
@@ -46,7 +55,10 @@ const clientsSchema = new mongoose.Schema({
     },
     creationDate : {
         type: String,
+<<<<<<< HEAD
         // required : true
+=======
+>>>>>>> 0e50e758d89e37019d617363b4b32edb33bde14c
     },
     isDeleted : {
         type : Boolean,

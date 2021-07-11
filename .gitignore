@@ -2,4 +2,5 @@ node_modules
 amparapp-hugo
 .env
 .DS_Store
-src/.DS_Storesendgrid.env
+src/.DS_Stores
+endgrid.env
