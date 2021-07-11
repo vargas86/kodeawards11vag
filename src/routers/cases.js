@@ -11,7 +11,7 @@ router.post('/', async (request, response) => {
             success: true,
             msg: 'Case registered successfully',
             data: {
-                user: newCase
+                newCase
             }
         })
     } catch (error) {
@@ -24,14 +24,14 @@ router.post('/', async (request, response) => {
     }
 })
 
-router.get('/', (request, response) => {
+router.get('/', async (request, response) => {
     try {
         const allCases = await cases.getAll()
         response.json({
             success: true,
             msg: 'All cases got',
             data: {
-                User: allCases
+                allCases
             }
         })
     } catch (error) {
@@ -55,7 +55,7 @@ router.get('/:id', async (request, response) => {
             success: true,
             msg: 'Current case set',
             data: {
-                User: currentCase
+                currentCase
             }
         })
     } catch (error) {

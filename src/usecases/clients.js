@@ -3,7 +3,7 @@ const bcrypt = require('../lib/bcrypt')
 const jwt = require('../lib/jwt')
 
 async function register({
-    name,
+    firstName,
     lastName,
     email,
     password,
@@ -13,7 +13,8 @@ async function register({
     preferences,
     birthdate,
     creationDate,
-    isDeleted
+    isDeleted,
+    casesSigned
 }) {
     const userFound = await Users.findOne({
         email
@@ -25,7 +26,7 @@ async function register({
 
     const encryptedPassword = await bcrypt.hash(password)
     return Users.create({
-        name,
+        firstName,
         lastName,
         email,
         password : encryptedPassword,
@@ -35,7 +36,8 @@ async function register({
         preferences,
         birthdate,
         creationDate,
-        isDeleted
+        isDeleted,
+        casesSigned
     })
 }
 
@@ -62,9 +64,8 @@ async function currentUser(email) {
     })
 }
 
-async function update(email, newData) {
-    console.log(email, newData)
-    const userToUpdate = await Users.findOneAndUpdate(email, newData)
+async function update(id, newData) {
+    const userToUpdate = await Users.findByIdAndUpdate({_id : id}, newData)
 
     if (!userToUpdate) {
         throw new Error('Invalid data')
@@ -84,11 +85,16 @@ async function getUser(username) {
     })
 }
 
+async function getAll(){
+    return Users.find({})
+}
+
 module.exports = {
     register,
     login,
     currentUser,
     update,
     getOne,
-    getUser
+    getUser,
+    getAll
 }

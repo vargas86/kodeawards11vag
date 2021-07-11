@@ -25,10 +25,6 @@ const casesSchema = new mongoose.Schema({
         default : ['registering'],
         required : true
     },
-    sentenceEffects : {
-        type : Object,
-        required : true
-    },
     plaint : {
         type : String,
         required : true
@@ -61,6 +57,10 @@ const casesSchema = new mongoose.Schema({
     },
     responsibleUser : {
         type : String,
+        required : true
+    },
+    signers : {
+        type : [Object],
         required : true
     }
 })
