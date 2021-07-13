@@ -26,12 +26,13 @@ router.post('/', async (request, response) => {
 
 router.get('/', async (request, response) => {
     try {
-        const allCases = await cases.getAll()
+        const {allCases, count} = await cases.getAll()
         response.json({
             success: true,
             msg: 'All cases got',
             data: {
-                allCases
+                allCases,
+                count
             }
         })
     } catch (error) {

@@ -1,7 +1,9 @@
 const cases = require('../models/cases')
 
 async function getAll() {
-    return await cases.find({})
+    const allCases =  await cases.find({})
+    const count = await cases.find({}).count()
+    return {allCases, count}
 }
 
 async function newCase({
@@ -44,7 +46,7 @@ async function getById(id) {
     return await cases.findById({
         id
     })
-}
+} 
 
 async function getSingleCase(id) {
     return await cases.find({
