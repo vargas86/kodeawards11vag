@@ -84,6 +84,7 @@ router.get('/:id', async (request, response) => {
         const {
             id
         } = request.params
+        console.log("OK")
         const currentUser = await users.getOne(id)
         response.json({
             success: true,

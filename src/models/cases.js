@@ -60,7 +60,8 @@ const casesSchema = new mongoose.Schema({
         required : true
     },
     signers : {
-        type : [Object],
+        type : [String],
+        default  : [],
         required : true
     }
 })

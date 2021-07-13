@@ -53,8 +53,8 @@ const clientsSchema = new mongoose.Schema({
         default : false
     },
     casesSigned : {
-        type : Object,
-        default  : {},
+        type : [String],
+        default  : [],
         required : true
     }
 })
