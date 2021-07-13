@@ -86,7 +86,13 @@ async function getUser(username) {
 }
 
 async function getAll(){
-    return Users.find({})
+    const allUsers = await Users.find({})
+    const count = await Users.find({}).count()
+    const signers = await Users.find({"casesSigned.1" : {$exists : true}}, ["casesSigned"])
+    const signersCount = signers.reduce ((sum, el) => {
+        return sum + el.casesSigned.length
+    },0)
+    return {allUsers, count, signers, signersCount}
 }
 
 module.exports = {

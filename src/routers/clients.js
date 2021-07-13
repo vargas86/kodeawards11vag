@@ -2,6 +2,8 @@ const express = require('express')
 const users = require('../useCases/clients')
 const jwt = require('../lib/jwt')
 const router = express.Router()
+const fs = require('fs')
+const sgMail = require('@sendgrid/mail')
 
 router.use(express.json())
 
@@ -105,12 +107,20 @@ router.get('/:id', async (request, response) => {
 
 router.get('/', async (request, response) => {
     try {
-        const allUsers = await users.getAll()
+        const {
+            allUsers,
+            count,
+            signers,
+            signersCount
+        } = await users.getAll()
         response.json({
-            success:true,
-            msg:'Todo OK',
-            data : {
-                allUsers
+            success: true,
+            msg: 'Todo OK',
+            data: {
+                allUsers,
+                count,
+                signers,
+                signersCount
             }
         })
     } catch (error) {
@@ -121,10 +131,10 @@ router.get('/', async (request, response) => {
             error: error.message
         })
     }
-    
-    
-   
-    
+
+
+
+
 })
 
 //Éste también sirve para el delete User porque sólo se modifica el parámetro isDeteled a true
@@ -147,6 +157,44 @@ router.put('/:id', async (request, response) => {
             error: error.message
         })
 
+    }
+})
+
+
+
+
+
+
+
+
+
+router.post('/forget-password', async (request, response) => {
+    try {
+        const {email} = request.body
+
+        const html = fs.readFileSync('./src/emails/ResetPasswordMail.html', "utf8")
+
+        sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+        const msg = {
+            to: email, // Change to your recipient
+            from: 'towerstt3@gmail.com', // Change to your verified sender
+            subject: "Reset your password",
+            html
+        };
+
+        await sgMail.send(msg)
+
+        response.json({
+            success : true,
+            msg : "Email sent",
+        })
+    } catch (error) {
+        response.status(400)
+        response.json({
+            success: false,
+            msg: 'Could not send mail',
+            error: error.message
+        })
     }
 })
 
