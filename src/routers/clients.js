@@ -55,7 +55,7 @@ router.post('/login', async (request, response) => {
     }
 })
 
-router.get('/:token', async (request, response) => {
+router.get('/tkn/:token', async (request, response) => {
     try {
         const {
             token
@@ -81,7 +81,7 @@ router.get('/:token', async (request, response) => {
 })
 
 
-router.get('/:id', async (request, response) => {
+router.get('/id/:id', async (request, response) => {
     try {
         const {
             id

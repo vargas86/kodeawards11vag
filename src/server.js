@@ -5,6 +5,7 @@ const cors = require('cors')
 const clientsRouter = require('./routers/clients')
 const clientsCaseRouter = require('./routers/clientCase')
 const casesRouter = require('./routers/cases')
+const abogadosRouter = require('./routers/abogados')
 
 const logger = require('./middlewares/logger')
 
@@ -17,6 +18,7 @@ app.use(logger)
 app.use('/clients', clientsRouter)
 app.use('/clientsCase', clientsCaseRouter)
 app.use('/cases', casesRouter)
+app.use('/abogados', abogadosRouter)
 
 
 module.exports = app
