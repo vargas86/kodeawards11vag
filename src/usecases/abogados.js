@@ -8,7 +8,8 @@ function getAll () {
 }
 
 function getById (id) {
-  return Abogados.findById(id)
+  console.log('ID UC', id)
+  return Abogados.find({_id : id})
 }
 
 async function currentUser(email) {
@@ -17,7 +18,7 @@ async function currentUser(email) {
   })
 }
 
-async function signUp ({ name, email, password, role }) {
+async function signUp ({ name, email, password, role, telefono, curp, domicilio, preferencias, nacimiento }) {
 
   const abogadoFound = await Abogados.findOne({ email })
 
@@ -31,7 +32,12 @@ async function signUp ({ name, email, password, role }) {
     name,
     email,
     password: encriptedPassword,
-    role
+    role, 
+    telefono, 
+    curp, 
+    domicilio, 
+    preferencias, 
+    nacimiento
   })
 }
 
