@@ -21,6 +21,7 @@ async function newCase({
     status,
     updates,
     creationDate,
+    documents,
     responsibleUser
 }) {
     return cases.create({
@@ -38,7 +39,7 @@ async function newCase({
         status,
         updates,
         creationDate,
-        responsibleUser
+        responsibleUser, documents
     })
 }
 
