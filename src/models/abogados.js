@@ -8,6 +8,12 @@ const usersSchema = new mongoose.Schema({
     minLength: 2,
     maxLength: 20
   },
+  lastName: {
+    type: String,
+    minLength: 2,
+    maxLength: 20,
+    required : true
+  },
   email: {
     type: String,
     match: /.+@.+\..+/,
@@ -19,44 +25,58 @@ const usersSchema = new mongoose.Schema({
     required: true,
     minLength: 1
   },
+  phone: {
+    type: String,
+    minLength: 1
+  },
+  idCard: {
+    type: String,
+    minLength: 1
+  },
+  imgProfile: {
+    type: String,
+    minLength: 1
+  },
+  date: {
+    type: String,
+    minLength: 1
+  },
+  address: {
+    type: String,
+    minLength: 1
+  },
+  description: {
+    type: String,
+    minLength: 1
+  },
+  linkedin: {
+    type: String,
+    minLength: 1
+  },
+  enterprise: {
+    type: String,
+    minLength: 1
+  },
+  website: {
+    type: String,
+    minLength: 1
+  },
+  dateCreation: {
+    type: Date,
+    minLength: 1
+  },
+  isDeleted: {
+    type: Boolean,
+    minLength: 1
+  },
   role: {
     type: [String],
-    enum: [ 'admin', 'abogado', 'user' ],
+    enum: [ 'abogado' ],
     minLength: 1,
     required: true
   },
-  telefono: {
-    type: String,
-    required: true,
-    minLength: 1
-  },
-  telefono: {
-    type: String,
-    required: true,
-    minLength: 1
-  },
-  curp: {
-    type: String,
-    required: true,
-    minLength: 1
-  },
-  domicilio: {
-    type: String,
-    required: true,
-    minLength: 1
-  },
-  preferencias: {
-    type: String,
-    required: true,
-    minLength: 1
-  },
-  nacimiento: {
-    type: String,
-    required: true,
-    minLength: 1
-  },
 })
 
-const model = mongoose.model('users', usersSchema)
+const model = mongoose.model('abogados', usersSchema)
 
 module.exports = model
