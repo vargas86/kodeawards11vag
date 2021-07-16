@@ -4,3 +4,5 @@ amparapp-hugo
 .DS_Store
 src/.DS_Store
 sendgrid.env
+
+.vercel
