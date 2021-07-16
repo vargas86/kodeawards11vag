@@ -8,9 +8,9 @@ const sgMail = require('@sendgrid/mail')
 router.use(express.json())
 
 
-router.post('/', async (request, response) => {
+router.post('/register', async (request, response) => {
     try {
-        const newLawyer = await Abogados.signUp(request.body)
+        const newLawyer = await Abogados.register(request.body)
         const token = await Abogados.login(request.body.email, request.body.password)
 
         response.json({
@@ -62,7 +62,7 @@ router.get('/tkn/:token', async (request, response) => {
         } = request.params
         const lawyerId = jwt.verify(token)
         console.log('ID', lawyerId.id)
-        const currentLawyer = await Abogados.getById(lawyerId.id)
+        const currentLawyer = await Abogados.getOne(lawyerId.id)
         console.log("CL", currentLawyer)
         response.json({
             success: true,
@@ -88,7 +88,7 @@ router.get('/id/:id', async (request, response) => {
             id
         } = request.params
         console.log("OK")
-        const currentlawyer = await Abogados.getOne(id)
+        const currentLawyer = await Abogados.getOne(id)
         response.json({
             success: true,
             msg: 'Current lawyer got',
@@ -108,9 +108,7 @@ router.get('/id/:id', async (request, response) => {
 
 router.get('/', async (request, response) => {
     try {
-        const {
-            allAbogados
-        } = await Abogados.getAll()
+        allAbogados = await Abogados.getAll()
         response.json({
             success: true,
             msg: 'Todo OK',
@@ -134,7 +132,7 @@ router.get('/', async (request, response) => {
 })
 
 //Éste también sirve para el delete lawyer porque sólo se modifica el parámetro isDeteled a true
-router.put('/:id', async (request, response) => {
+router.put('/id/:id', async (request, response) => {
     try {
         const id = request.params.id
         const modifiedlawyer = Abogados.update(id, request.body)
