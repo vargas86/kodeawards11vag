@@ -2,7 +2,7 @@
 const mongoose = require('mongoose')
 
 const usersSchema = new mongoose.Schema({
-  name: {
+  firstName: {
     type: String,
     required: true,
     minLength: 2,
@@ -25,7 +25,7 @@ const usersSchema = new mongoose.Schema({
     required: true,
     minLength: 1
   },
-  phone: {
+  phoneNumber: {
     type: String,
     minLength: 1
   },
@@ -37,7 +37,7 @@ const usersSchema = new mongoose.Schema({
     type: String,
     minLength: 1
   },
-  date: {
+  birthdate: {
     type: String,
     minLength: 1
   },
@@ -61,19 +61,19 @@ const usersSchema = new mongoose.Schema({
     type: String,
     minLength: 1
   },
-  dateCreation: {
-    type: Date,
+  creationDate: {
+    type: String,
     minLength: 1
   },
   isDeleted: {
     type: Boolean,
-    minLength: 1
+    minLength: 1,
+    default: false
   },
   role: {
     type: [String],
     enum: [ 'abogado' ],
     minLength: 1,
-    required: true
   },
 })
 

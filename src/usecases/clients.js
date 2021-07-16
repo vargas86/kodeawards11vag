@@ -65,7 +65,8 @@ async function currentUser(email) {
 }
 
 async function update(id, newData) {
-    const userToUpdate = await Users.findByIdAndUpdate({_id : id}, newData)
+    const encryptedPassword = await bcrypt.hash(newData.password)
+    const userToUpdate = await Users.findByIdAndUpdate({_id : id}, {...newData, password : encryptedPassword})
 
     if (!userToUpdate) {
         throw new Error('Invalid data')

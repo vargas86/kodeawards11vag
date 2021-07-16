@@ -48,10 +48,9 @@ router.get('/', async (request, response) => {
 
 router.get('/:id', async (request, response) => {
     try {
-        const {
-            id
-        } = request.body
-        const currentCase = await cases.getById({id})
+        const id = request.params.id
+        const currentCase = await cases.getSingleCase(id)
+        console.log('currentCase', currentCase)
         response.json({
             success: true,
             msg: 'Current case set',

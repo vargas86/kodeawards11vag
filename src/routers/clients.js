@@ -177,8 +177,39 @@ router.post('/forget-password', async (request, response) => {
         sgMail.setApiKey(process.env.SENDGRID_API_KEY);
         const msg = {
             to: email, // Change to your recipient
-            from: 'towerstt3@gmail.com', // Change to your verified sender
-            subject: "Reset your password",
+            from: 'hugotoca@gmail.com', // Change to your verified sender
+            subject: "Reset your password in Alza La Voz",
+            html
+        };
+
+        await sgMail.send(msg)
+
+        response.json({
+            success : true,
+            msg : "Email sent",
+        })
+    } catch (error) {
+        response.status(400)
+        response.json({
+            success: false,
+            msg: 'Could not send mail',
+            error: error.message
+        })
+    }
+})
+
+router.post('/suscribe', async (request, response) => {
+    try {
+        const {email} = request.body
+        console.log('Suscribe', email)
+
+        const html = fs.readFileSync('./src/emails/Suscribe.html', "utf8")
+
+        sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+        const msg = {
+            to: email, // Change to your recipient
+            from: 'hugotoca@gmail.com', // Change to your verified sender
+            subject: "Thank you for suscribe to our newsletter",
             html
         };
 
