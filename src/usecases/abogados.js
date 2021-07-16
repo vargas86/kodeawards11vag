@@ -18,7 +18,7 @@ async function currentUser(email) {
   })
 }
 
-async function signUp ({ name, email, password, role, telefono, curp, domicilio, preferencias, nacimiento }) {
+async function signUp ({ name, lastName, email, password, role, telefono, curp, domicilio, preferencias, nacimiento }) {
 
   const abogadoFound = await Abogados.findOne({ email })
 
@@ -30,6 +30,7 @@ async function signUp ({ name, email, password, role, telefono, curp, domicilio,
 
   return Abogados.create({
     name,
+    lastName,
     email,
     password: encriptedPassword,
     role, 

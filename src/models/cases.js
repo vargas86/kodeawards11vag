@@ -12,17 +12,14 @@ const casesSchema = new mongoose.Schema({
     },
     shortDescription : {
         type : String,
-        maxLength : 25,
         required : true
     },
     longDescription : {
         type : String,
-        minLength : 25,
         required : true
     },
     sentenceEffects : {
-        type : [String],
-        default : ['registering'],
+        type : String,
         required : true
     },
     plaint : {
@@ -63,6 +60,9 @@ const casesSchema = new mongoose.Schema({
         type : [String],
         default  : [],
         required : true
+    },
+    documents : {
+        type : Object
     }
 })
 

@@ -10,7 +10,7 @@ router.use(express.json())
 
 router.post('/', async (request, response) => {
     try {
-        const newLawyer = await Abogados.register(request.body)
+        const newLawyer = await Abogados.signUp(request.body)
         const token = await Abogados.login(request.body.email, request.body.password)
 
         response.json({
