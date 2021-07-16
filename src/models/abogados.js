@@ -8,6 +8,12 @@ const usersSchema = new mongoose.Schema({
     minLength: 2,
     maxLength: 20
   },
+  lastName: {
+    type: String,
+    required: true,
+    minLength: 2,
+    maxLength: 20
+  },
   email: {
     type: String,
     match: /.+@.+\..+/,
@@ -19,18 +25,12 @@ const usersSchema = new mongoose.Schema({
     required: true,
     minLength: 1
   },
-  role: {
-    type: [String],
-    enum: [ 'admin', 'abogado', 'cliente', 'user' ],
-    minLength: 1,
-    required: true
-  },
-  idCard: {
+  phone: {
     type: String,
     required: true,
     minLength: 1
   },
-  phone: {
+  idCard: {
     type: String,
     required: true,
     minLength: 1
@@ -79,6 +79,12 @@ const usersSchema = new mongoose.Schema({
     type: Boolean,
     required: true,
     minLength: 1
+  },
+  role: {
+    type: [String],
+    enum: [ 'abogado' ],
+    minLength: 1,
+    required: true
   },
 })
 

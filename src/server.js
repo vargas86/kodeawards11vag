@@ -3,7 +3,7 @@ const express = require('express')
 const cors = require('cors')
 
 //const kodersRouter = require('./routers/abogados')
-const usersRouter = require('./routers/users')
+const usersRouter = require('./routers/abogados')
 
 const logger = require('./middlewares/logger')
 
