@@ -50,7 +50,7 @@ async function getById(id) {
 
 async function getSingleCase(id) {
     return await cases.find({
-        id
+       _id : id
     })
 }
 
