@@ -1,5 +1,5 @@
 const express = require('express')
-const clientCase = require('../useCases/clientCase')
+const clientCase = require('../usecases/clientCase')
 const router = express.Router()
 router.use(express.json())
 

@@ -1,5 +1,5 @@
 const express = require('express')
-const users = require('../useCases/clients')
+const users = require('../usecases/clients')
 const jwt = require('../lib/jwt')
 const router = express.Router()
 const fs = require('fs')
