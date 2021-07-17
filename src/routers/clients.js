@@ -138,7 +138,7 @@ router.get('/', async (request, response) => {
 })
 
 //Éste también sirve para el delete User porque sólo se modifica el parámetro isDeteled a true
-router.put('/:id', async (request, response) => {
+router.put('/id/:id', async (request, response) => {
     try {
         const id = request.params.id
         const modifiedUser = users.update(id, request.body)
