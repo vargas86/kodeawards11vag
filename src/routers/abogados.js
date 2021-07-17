@@ -1,5 +1,5 @@
 const express = require('express')
-const Abogados = require('../useCases/abogados')
+const Abogados = require('../usecases/abogados')
 const jwt = require('../lib/jwt')
 const router = express.Router()
 const fs = require('fs')
